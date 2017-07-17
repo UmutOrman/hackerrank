@@ -1,0 +1,25 @@
+"""
+def get_lines(number):
+    for i in range(len(number)):
+        
+def get_paths(grid_size):
+    grid_index = 0
+    for i in range(grid_size * grid_size):
+        if
+pathes = {}
+
+for i in range(10):
+    print i * 100
+    for j in range(10):
+        print j
+        if j == 5:
+            break
+"""
+def number_of_paths(dest_row, dest_col):
+    if dest_row == 1 or dest_col == 1:
+        return 1
+    else:
+        return number_of_paths(dest_row -1, dest_col) + number_of_paths(dest_row, dest_col -1)
+
+print number_of_paths(2, 2)
+        
