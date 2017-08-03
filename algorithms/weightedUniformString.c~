@@ -1,0 +1,76 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    char* s = (char *)malloc(512000 * sizeof(char));
+    scanf("%s",s);
+    int n,i,j,k,a0; 
+    scanf("%d",&n);      
+    int results[n];
+    int query_values[n];    
+    for(a0 = 0; a0 < n; a0++){
+        int x; 
+        scanf("%d",&x);	
+	query_values[a0] = x;
+	results[a0] = 0;
+	/*
+	int possible_queries[strlen(s)];
+	int occurences = 1;
+	for(i = 0; i < strlen(s); i++){
+	  possible_queries[i] = (((int) s[i]) - 96) * occurences;
+	  if(possible_queries[i] == query_values[a0]){
+	    results[a0] = 1;
+	    break;
+	  }
+	  if(i < strlen(s) - 1){
+	    if(s[i] == s[i+1])
+	      occurences++;
+	    else
+	      occurences = 1;
+	  }
+	}
+	*/
+    }
+
+    
+    int possible_queries[strlen(s)];
+    int occurences = 1;
+    char last_letter;
+    for(i = 0; i < strlen(s); i++){
+        if(last_letter == s[i])
+	  occurences++;
+	else
+	  occurences = 1;
+	possible_queries[i] = (((int) s[i]) - 96) * occurences;
+	for(k = 0; k < n; k++){
+	  if(possible_queries[i] == query_values[k])
+	    results[k] = 1;
+	}
+	
+	
+	/*
+	if(i < strlen(s) - 1)
+	  if(s[i] == s[i+1])
+	    occurences++;
+	  else
+	    occurences = 1;
+	}
+	*/
+        last_letter = s[i];
+    }
+    
+
+    for(i = 0; i < n; i++){
+      if(results[i])
+	  printf("Yes\n");
+      else
+	  printf("No\n");
+    }
+    free(s);
+    return 0;
+}
