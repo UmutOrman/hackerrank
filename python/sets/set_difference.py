@@ -1,0 +1,5 @@
+n_english = int(raw_input())
+Estudents = set(map(int,raw_input().split()))
+n_french = int(raw_input())
+Fstudents = set(map(int,raw_input().split()))
+print len(Estudents - Fstudents)
